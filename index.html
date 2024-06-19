@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lokesh YT</title>
-    <link rel="icon" href="fav.png" type="image/png">
+    <link rel="icon" href="nnn.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -26,7 +26,7 @@
         }
 
         .logo {
-            width: 50px; /* Smaller size for the logo */
+            width: 100px; /* Smaller size for the logo */
             height: auto;
         }
 
@@ -35,6 +35,14 @@
             font-size: 24px;
             margin-left: 10px;
             margin-top: 15px;
+        }
+
+        .live-indicator {
+            color: green;
+            font-size: 24px;
+            margin-left: 10px;
+            margin-top: 15px;
+            display: none; /* Hidden by default */
         }
 
         .about-me {
@@ -93,7 +101,6 @@
             text-align: center;
         }
 
-        /* Donation Section Styles */
         .donation {
             margin: 10px 20px;
             padding: 10px;
@@ -102,7 +109,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-sizing: border-box;
-            text-align: center; /* Center text content */
+            text-align: center;
         }
 
         .donation h2 {
@@ -128,13 +135,12 @@
         }
 
         .donation-qr {
-            width: 200px; /* Adjust size as needed */
+            width: 200px;
             height: 200px;
-            margin: 0 auto 10px auto; /* Center horizontally */
+            margin: 0 auto 10px auto;
             display: block;
         }
 
-        /* Socials Section Styles */
         .socials {
             margin: 20px 10px;
             text-align: center;
@@ -153,11 +159,10 @@
         }
 
         .social-icons img {
-            width: 50px; /* Adjust size as needed */
+            width: 50px;
             height: auto;
         }
 
-        /* Media Queries for Responsive Design */
         @media screen and (max-width: 768px) {
             .header {
                 justify-content: center;
@@ -195,22 +200,23 @@
             }
 
             .donation {
-                margin: 10px auto; /* Center horizontally */
+                margin: 10px auto;
             }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="nnn.png" alt="Logo" class="logo">
         <span class="title">Rahul Lokesh</span>
+        <span class="live-indicator" id="liveIndicator">LIVE NOW</span>
     </div>
     <div class="about-me">
         <h1>ABOUT ME</h1>
         <p>Rahul Lokesh is a passionate Fortnite player known for his strategic gameplay and quick reflexes. With a deep understanding of the game mechanics, he has built a reputation in the gaming community as a formidable opponent and a supportive teammate.</p>
     </div>
     <div class="glass-container">
-        <img src="logo.png" alt="Logo in Glass Container" class="glass-logo">
+        <img src="nnn.png" alt="Logo in Glass Container" class="glass-logo">
     </div>
     
     <div class="raven-info">
@@ -218,19 +224,17 @@
         <div class="hi-text">HI, My journey into Fortnite began with its inception, and since then, I've honed my skills to become a formidable force on the battlefield. Known for my tactical approach and adaptive gameplay style, I've earned a reputation as a respected competitor and a trusted teammate.</div>
     </div>
 
-    <!-- Donation Section -->
     <div class="donation">
         <h2>Donation</h2>
-        <p>UPI ID:lokeshyt@freecharge</a></p>
-        <p>UPI ID: <a href="https://donates.in/i/rahullokesh">lokesh YT(click it)</a></p>
+        <p>UPI ID:nexusgamingtg@freecharge</p>
+    
         <img src="qr.jpg" alt="QR Code for Donation" class="donation-qr">
     </div>
 
-    <!-- Socials Section -->
     <div class="socials">
         <h2>SOCIALS</h2>
         <div class="social-icons">
-            <a href="https://www.twitch.tv/lokheshyt" target="_blank">
+            <a href="https://www.twitch.tv/nexustgamer" target="_blank">
                 <img src="twitch.png" alt="Twitch">
             </a>
             <a href="https://www.youtube.com/channel/UC6kRWMYzybQh2thQynLfjlg" target="_blank">
@@ -238,5 +242,30 @@
             </a>
         </div>
     </div>
+
+    <script>
+        async function checkIfLive() {
+            const clientId = '7a350j20n4lngwyc89gvxi1vp7y3af';
+            const username = 'lokheshyt';
+            const url = `https://api.twitch.tv/helix/streams?user_login=${username}`;
+
+            const response = await fetch(url, {
+                headers: {
+                    'Client-ID': clientId,
+                    'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+                }
+            });
+
+            const data = await response.json();
+
+            if (data.data && data.data.length > 0) {
+                document.getElementById('liveIndicator').style.display = 'inline';
+            } else {
+                document.getElementById('liveIndicator').style.display = 'none';
+            }
+        }
+
+        checkIfLive();
+    </script>
 </body>
 </html>
